@@ -22,17 +22,17 @@ begin
 
   begin
     b = given_url.split('/')
-    p main_url = b[0] + '//' + b[2]
+    main_url = b[0] + '//' + b[2]
     all = []
     web_page.links.each do |single_link|
       if single_link.href
 
         if single_link.href.include?('//')
-          all << single_link.href
+          puts  all << single_link.href
           # puts  single_link.href
         else
           all << show_url = full_url(main_url ,single_link.href)
-          # p show_url
+           puts show_url
         end
       end
     end
