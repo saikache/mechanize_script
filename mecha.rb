@@ -12,8 +12,7 @@ begin
   end
   puts 'Please Enter A URL:'
   given_url = add_http gets.chomp
-  # p '3333333333333333333'
-  p given_url
+  puts given_url
 
   begin
     web_page = Mechanize.new.get(given_url)
@@ -29,17 +28,18 @@ begin
       if single_link.href
 
         if single_link.href.include?('//')
-          all << single_link.href.split('//').join
-          p  single_link.href
+          all << single_link.href
+          # puts  single_link.href
         else
           all << show_url = full_url(main_url ,single_link.href)
-          p show_url
+          # p show_url
         end
       end
     end
     puts '======================================================='
     puts "TOTAL URL'S FROM WEB"
     puts '======================================================='
+    puts
 
     all = all.uniq
     not_working_urls = ['https://github.com/TESTING_URLLLLpdf3222222423']
@@ -49,8 +49,6 @@ begin
     unless all.empty?
       all.each do |url|
         begin
-          p url
-          p 'eeeeeeeeeeeeeeeeeeeeeee'
           check_url = Mechanize.new.get(url)
         rescue
           not_working_urls << url
